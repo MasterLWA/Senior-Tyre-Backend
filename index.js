@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-const supplierRoutes = require('./Routes/Supplier.js');
+const supplierRoutes = require('./Routes/Supplier.Js');
 const grnRoutes = require('./Routes/grnRoutes.js');
 const mrnRoutes = require('./Routes/mrnRouter.js');
 
