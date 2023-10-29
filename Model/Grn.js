@@ -33,9 +33,29 @@ const GrnSchema = new Schema({
         type: Number,
         required: true,
     },
+    PaymentMethod: {
+        type: String,
+        required: true,
+    },
+    SupplierName: {
+        type: String,
+        required: true,
+    },
+    subGRNQuntity: {
+        type: Number,
+        required: true,
+    },
     ValueRemarks: {
         type: String
-    }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now,
+    },
 }, { timestamps: true });
 
 // Export the model
