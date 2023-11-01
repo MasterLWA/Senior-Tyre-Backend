@@ -68,7 +68,7 @@ const updateGrnById = async (req, res) => {
     try{
         const {id} = req.params
         const { ItemName, ItemCode, Quantity, CostPrice, MinSellPrice, WholeSellPrice, SellingPrice, ValueRemarks } = req.body;
-        const updatedGrn = await Grn.findByIdAndUpdate(id, { ItemName, ItemCode, Quantity, CostPrice, MinSellPrice, WholeSellPrice, SellingPrice, PaymentMethod, SupplierName, subGRNQuntity, ValueRemarks }, { new: true })
+        const updatedGrn = await Grn.findByIdAndUpdate(id, { ItemName, ItemCode, Quantity, CostPrice, MinSellPrice, WholeSellPrice, SellingPrice, ValueRemarks }, { new: true })
         res.json(updatedGrn);
     } catch (error) {
         console.error(error);

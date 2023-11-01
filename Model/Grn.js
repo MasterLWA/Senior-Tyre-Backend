@@ -35,7 +35,6 @@ const GrnSchema = new Schema({
     },
     PaymentMethod: {
         type: String,
-        required: true,
     },
     SupplierName: {
         type: String,
@@ -43,7 +42,6 @@ const GrnSchema = new Schema({
     },
     subGRNQuntity: {
         type: Number,
-        required: true,
     },
     ValueRemarks: {
         type: String
