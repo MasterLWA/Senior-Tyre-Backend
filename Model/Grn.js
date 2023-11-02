@@ -40,7 +40,7 @@ const GrnSchema = new Schema({
         type: String,
         required: true,
     },
-    subGRNQuntity: {
+    subGRNQuantity: {
         type: Number,
     },
     ValueRemarks: {

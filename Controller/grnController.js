@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Add grn
 const addGrn = async (req, res) => {
-    const { ItemName, ItemCode, Quantity, CostPrice, MinSellPrice, WholeSellPrice, SellingPrice, PaymentMethod, SupplierName, subGRNQuntity, ValueRemarks } = req.body;
+    const { ItemName, ItemCode, Quantity, CostPrice, MinSellPrice, WholeSellPrice, SellingPrice, PaymentMethod, SupplierName, subGRNQuantity, ValueRemarks } = req.body;
     
     // Simple validation
     
@@ -26,7 +26,7 @@ const addGrn = async (req, res) => {
             SellingPrice,
             PaymentMethod,
             SupplierName,
-            subGRNQuntity,
+            subGRNQuantity,
             ValueRemarks
         });
 
@@ -67,8 +67,8 @@ const getGrnById = async (req, res) => {
 const updateGrnById = async (req, res) => {
     try{
         const {id} = req.params
-        const { ItemName, ItemCode, Quantity, CostPrice, MinSellPrice, WholeSellPrice, SellingPrice, ValueRemarks } = req.body;
-        const updatedGrn = await Grn.findByIdAndUpdate(id, { ItemName, ItemCode, Quantity, CostPrice, MinSellPrice, WholeSellPrice, SellingPrice, ValueRemarks }, { new: true })
+        const { ItemName, ItemCode, Quantity, CostPrice, MinSellPrice, WholeSellPrice, SellingPrice, subGRNQuantity, ValueRemarks } = req.body;
+        const updatedGrn = await Grn.findByIdAndUpdate(id, { ItemName, ItemCode, Quantity, CostPrice, MinSellPrice, WholeSellPrice, SellingPrice,subGRNQuantity, ValueRemarks }, { new: true })
         res.json(updatedGrn);
     } catch (error) {
         console.error(error);
