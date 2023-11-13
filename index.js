@@ -20,11 +20,13 @@ const supplierRoutes = require('./Routes/Supplier.Js');
 const grnRoutes = require('./Routes/grnRoutes.js');
 const mrnRoutes = require('./Routes/mrnRouter.js');
 const subGrnRoutes = require('./Routes/subGrn.js');
+const profitRoutes = require('./Routes/profitRouter.js');
 
 app.use(supplierRoutes);
 app.use(grnRoutes);
 app.use(mrnRoutes);
 app.use(subGrnRoutes);
+app.use(profitRoutes);
 
 // Connect to MongoDB
  const dbUrl = process.env.DBURL;
