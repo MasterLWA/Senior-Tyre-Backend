@@ -42,7 +42,7 @@ const ProfitSchema = new Schema({
     },
     month: {
         type: Date,
-        default: Date.month
+        default: Date.now
     }
 
     
