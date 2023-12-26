@@ -1,4 +1,5 @@
 const Profit = require('../Model/Profit'); // Use a capitalized name for the model
+const indexnum = require('../Model/indexnum'); // Use a capitalized name for the model
 const mongoose = require('mongoose');
 
     const addProfit = async (req, res) => {
@@ -45,8 +46,35 @@ const mongoose = require('mongoose');
         }
     }
 
+
+    // get index number by ID
+    const getIndexNumber = async (req, res) => {
+        try {
+            const indexNumber = await indexnum.findById(req.params.id);
+            res.status(200).json(indexNumber);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Server error' });
+        }
+    }
+
+    // update index number
+    const updateIndexNumber = async (req, res) => {
+        try {
+            const indexNumber = await indexnum.findByIdAndUpdate(req.params.id, { indexnum: req.body.indexnum }, { new: true })
+            res.status(200).json(indexNumber);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Server error' });
+        }
+    }
+
+
+
 module.exports = {
     addProfit,
     getAllProfit,
-    getProfitByTimeDuration
+    getProfitByTimeDuration,
+    updateIndexNumber,
+    getIndexNumber
 }
