@@ -69,6 +69,38 @@ const mongoose = require('mongoose');
         }
     }
 
+    const deleteProfit = async (req, res) => {
+        try {
+          const profitId = req.params.id;
+      
+          // Check if the profitId is a valid ObjectId before attempting to delete
+          if (!mongoose.Types.ObjectId.isValid(profitId)) {
+            return res.status(400).json({ message: 'Invalid profit ID' });
+          }
+      
+          const profit = await Profit.findByIdAndDelete(profitId);
+      
+          if (!profit) {
+            return res.status(404).json({ message: 'Profit not found' });
+          }
+      
+          res.status(200).json(profit);
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ message: 'Server error' });
+        }
+      };
+
+    const getProfitByDate = async (req, res) => {
+        try {
+            const profits = await Profit.find({ day: req.params.date });
+            res.status(200).json(profits);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Server error' });
+        }
+    }
+
 
 
 module.exports = {
@@ -76,5 +108,7 @@ module.exports = {
     getAllProfit,
     getProfitByTimeDuration,
     updateIndexNumber,
-    getIndexNumber
+    getIndexNumber,
+    deleteProfit,
+    getProfitByDate
 }
