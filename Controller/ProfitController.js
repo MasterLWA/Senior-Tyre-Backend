@@ -101,6 +101,18 @@ const mongoose = require('mongoose');
         }
     }
 
+    // send login details to user and admin from env file   
+    const sendUserandadminpasswords = async (req, res) => {
+           
+        const user = process.env.USER_PASSWORD;
+        const admin = process.env.ADMIN_PASSWORD;
+
+        res.status(200).json({user,admin});
+        
+ 
+
+    }
+
 
 
 module.exports = {
@@ -110,5 +122,6 @@ module.exports = {
     updateIndexNumber,
     getIndexNumber,
     deleteProfit,
-    getProfitByDate
+    getProfitByDate,
+    sendUserandadminpasswords
 }
