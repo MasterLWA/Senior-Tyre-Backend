@@ -94,6 +94,19 @@ const deleteGrnById = async (req, res) => {
 }
 
 
+// update grn by id subGRNQuantity by ItemName
+const updateGrnByItemName = async (req, res) => {
+    try{
+        const {ItemName} = req.params
+        const { subGRNQuantity } = req.body;
+        const updatedGrn = await Grn.findOneAndUpdate({ItemName}, { subGRNQuantity }, { new: true })
+        res.json(updatedGrn);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
 
 //export modules
 module.exports = {
@@ -101,5 +114,6 @@ module.exports = {
     getAllGrn,
     getGrnById,
     updateGrnById,
-    deleteGrnById
+    deleteGrnById,
+    updateGrnByItemName
 }

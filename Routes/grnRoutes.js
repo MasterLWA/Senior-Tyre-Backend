@@ -6,7 +6,8 @@ const {
     getAllGrn,
     getGrnById,
     updateGrnById,
-    deleteGrnById
+    deleteGrnById,
+    updateGrnByItemName
 } = require('../Controller/grnController');
 
 // Define a POST route for adding a supplier
@@ -23,5 +24,8 @@ router.patch('/grn/:id', updateGrnById);
 
 // Define a DELETE route for deleting a supplier by id
 router.delete('/grn/:id', deleteGrnById);
+
+// Define a patch route for updating a subGRNQuantity by ItemName
+router.patch('/grn/:ItemName', updateGrnByItemName);
 
 module.exports = router; 
