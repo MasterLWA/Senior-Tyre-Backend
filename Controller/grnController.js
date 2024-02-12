@@ -93,14 +93,26 @@ const deleteGrnById = async (req, res) => {
     }
 }
 
-
-// update grn by id subGRNQuantity by ItemName
+// update grn by id subGRNQuantity by ItemName add parameter value to current value
 const updateGrnByItemName = async (req, res) => {
-    try{
-        const {ItemName} = req.params
-        const { subGRNQuantity } = req.body;
-        const updatedGrn = await Grn.findOneAndUpdate({ItemName}, { subGRNQuantity }, { new: true })
-        res.json(updatedGrn);
+    try {
+        const { ItemName } = req.params;
+        const { valueToAdd } = req.body; // Assuming valueToAdd is the parameter value to add
+
+        // Find the document with the specified ItemName
+        const grn = await Grn.findOne({ ItemName });
+
+        if (!grn) {
+            return res.status(404).json({ message: 'GRN not found' });
+        }
+
+        // Update subGRNQuantity by adding the value to the current quantity
+        grn.subGRNQuantity += valueToAdd;
+
+        // Save the updated document
+        await grn.save();
+
+        res.json(grn);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server error' });
