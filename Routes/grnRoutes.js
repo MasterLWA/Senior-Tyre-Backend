@@ -26,6 +26,6 @@ router.patch('/grn/:id', updateGrnById);
 router.delete('/grn/:id', deleteGrnById);
 
 // Define a patch route for updating a subGRNQuantity by ItemName
-router.patch('/grn/:ItemName', updateGrnByItemName);
+router.patch('/grnbyname/:ItemName', updateGrnByItemName);
 
 module.exports = router; 
