@@ -43,9 +43,10 @@ const ProfitSchema = new Schema({
     month: {
         type: Date,
         default: Date.now
+    },
+    Loan: {
+        type: Number,
     }
-
-    
 }, { timestamps: true });
 
 // Export the model
